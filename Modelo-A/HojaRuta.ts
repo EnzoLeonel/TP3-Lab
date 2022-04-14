@@ -1,17 +1,24 @@
 import { Detalle } from "./Detalle";
 
-class HojaRuta{
+export class HojaRuta{
     fecha: Date;
     numero: number;
-    detalle: Detalle;
+    detalles = Array<Detalle>();
 
-    constructor(fecha:Date, numero:number, detalle: Detalle){
+    constructor(fecha:Date, numero:number){
         this.fecha = fecha;
         this.numero = numero;
-        this.detalle = detalle;
+    }
+
+    addDetalle(detalle: Detalle){
+        this.detalles.push(detalle);
     }
 
     calcularTotalKilometros(): number{
-        return this.detalle.kmRegreso + this.detalle.horaSalida;
+        let total: number = 0;
+        this.detalles.forEach(element => {
+            total += element.kmSalida + element.kmRegreso;
+        });
+        return total;
     }
 }
