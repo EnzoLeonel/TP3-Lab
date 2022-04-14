@@ -10,4 +10,7 @@ class Cliente{
         this. razonSocial = razonSocial;
         this. cuit = cuit;
     }
+    totalFacturadoXTipoPago(tipoPago: string): number{
+        return;
+    }
 }

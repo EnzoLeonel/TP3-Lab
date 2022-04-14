@@ -1,7 +1,7 @@
 export class Articulo{
     codigo: number;
     denominacion: string;
-    precio: number;
+    precio: number = 0;
     unidadMedida: string;
 
     constructor(codigo: number, denominacion: string, precio: number, unidadMedida: string){

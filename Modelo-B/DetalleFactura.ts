@@ -1,12 +1,19 @@
 import { Articulo } from "./Articulo";
 
 export class DetalleFactura{
-    cantitad: number;
-    subtotal: number;
+    cantidad: number = 0;
+    private subtotal: number = 0;
     articulo: Articulo;
 
     constructor(cantidad: number, subtotal: number){
-        this.cantitad = cantidad;
+        this.cantidad = cantidad;
         this.subtotal = subtotal;
+    }
+    calcularSubTotal() {
+        this.subtotal = this.cantidad * this.articulo.precio;
+    }
+    getSubtotal(): number{
+        this.calcularSubTotal();
+        return this.subtotal;
     }
 }
