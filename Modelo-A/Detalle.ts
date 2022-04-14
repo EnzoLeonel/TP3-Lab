@@ -5,4 +5,9 @@ export class Detalle{
     horaRegreso: number;
     minutoSalida: number;
     minutoRegreso: number;
+
+    constructor(kmSalida: number, kmRegreso: number){
+        this.kmSalida = kmSalida;
+        this.kmRegreso = kmRegreso;
+    }
 }

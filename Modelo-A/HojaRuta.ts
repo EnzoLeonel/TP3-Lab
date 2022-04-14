@@ -17,7 +17,7 @@ export class HojaRuta{
     calcularTotalKilometros(): number{
         let total: number = 0;
         this.detalles.forEach(element => {
-            total += element.kmSalida + element.kmRegreso;
+            total += element.kmRegreso - element.kmSalida;
         });
         return total;
     }

@@ -16,6 +16,12 @@ export class Vehiculo{
     }
 
     calcularTotalKilometrosRecorridos(fechaDesde: Date, fechaHasta: Date): number{
-        return ;
+        let total: number = 0;
+        this.hojasRuta.forEach(hoja =>{
+            if(hoja.fecha >= fechaDesde && hoja.fecha <= fechaHasta){
+                total += hoja.calcularTotalKilometros();
+            }
+        });
+        return total;
     }
 }
