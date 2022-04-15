@@ -5,9 +5,10 @@ export class DetalleFactura{
     private subtotal: number = 0;
     articulo: Articulo;
 
-    constructor(cantidad: number, subtotal: number){
+    constructor(cantidad: number, articulo: Articulo){
         this.cantidad = cantidad;
-        this.subtotal = subtotal;
+        this.articulo = articulo;
+
     }
     calcularSubTotal() {
         this.subtotal = this.cantidad * this.articulo.precio;

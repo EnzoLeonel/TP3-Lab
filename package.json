@@ -4,7 +4,7 @@
   "description": "Grupo: Enzo Sanchez, Cintia Rigoni, Enzo Santilli, Emiliano Sinatra, Matias San Pietro",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "tsc TestB.ts\nnode TestB.js"
   },
   "repository": {
     "type": "git",

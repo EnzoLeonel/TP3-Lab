@@ -1,55 +1,48 @@
-import { DetalleFactura } from "./DetalleFactura";
-
-export class Factura{
-    letra: string;
-    numero: number;
-    recargo: number = 0;
-    private tipoPago: string;
-    totalItems: number = 0;
-    totalFinal: number = 0;
-    fecha: Date;
-    detalles: Array<DetalleFactura>;
-
-    constructor(letra: string, numero: number, fecha: Date){
+"use strict";
+exports.__esModule = true;
+exports.Factura = void 0;
+var Factura = /** @class */ (function () {
+    function Factura(letra, numero, fecha) {
+        this.recargo = 0;
+        this.totalItems = 0;
+        this.totalFinal = 0;
         this.letra = letra;
         this.numero = numero;
         this.fecha = fecha;
-        this.detalles = Array<DetalleFactura>();
+        this.detalles = Array();
     }
-    addDetalleFactura(detalle: DetalleFactura){
+    Factura.prototype.addDetalleFactura = function (detalle) {
         this.detalles.push(detalle);
-    }
-
-    setTipoPago(tipoPago: string){
+    };
+    Factura.prototype.setTipoPago = function (tipoPago) {
         this.tipoPago = tipoPago;
-        switch(tipoPago){
+        switch (tipoPago) {
             case 'CC':
                 //Recargo del 10% con Tarjeta de Credito
                 this.recargo = 0.10;
                 break;
-
             case 'TC':
                 //Recargo del 18% con Tarjeta de Credito
                 this.recargo = 0.18;
                 break;
-
             default:
                 //Sin recargo con Efectivo, Transferencia o Tarjeta de Debito
                 this.recargo = 0;
                 break;
         }
-    }
-
-    calcularTotalItems(){
-        let monto: number = 0;
-        this.detalles.forEach(detalle =>{
+    };
+    Factura.prototype.calcularTotalItems = function () {
+        var monto = 0;
+        this.detalles.forEach(function (detalle) {
             monto += detalle.getSubtotal();
         });
         this.totalItems = monto;
-    }
-    calcularTotalFinal(){
+    };
+    Factura.prototype.calcularTotalFinal = function () {
         this.calcularTotalItems();
-        let recargoMonto: number = this.totalItems * this.recargo;
+        var recargoMonto = this.totalItems * this.recargo;
         this.totalFinal = this.totalItems + recargoMonto;
-    }
-}
+    };
+    return Factura;
+}());
+exports.Factura = Factura;

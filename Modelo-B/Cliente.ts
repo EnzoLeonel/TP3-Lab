@@ -1,5 +1,5 @@
 import { Factura } from "./Factura";
-class Cliente{
+export class Cliente{
     numero: number;
     razonSocial: string;
     cuit: number;
@@ -9,8 +9,19 @@ class Cliente{
         this.numero = numero;
         this. razonSocial = razonSocial;
         this. cuit = cuit;
+        this.facturas = Array<Factura>();
+    }
+
+    addFactura(factura: Factura){
+        this.facturas.push(factura);
     }
     totalFacturadoXTipoPago(tipoPago: string): number{
-        return;
+        let total: number = 0;
+        this.facturas.forEach(factura =>{
+            factura.setTipoPago(tipoPago);
+            factura.calcularTotalFinal();
+            total += factura.totalFinal;
+        });
+        return total;
     }
 }
